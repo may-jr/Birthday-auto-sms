@@ -13,44 +13,45 @@
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form>
+            <form action="../php/register.php" method="post">
                 <h1>Register With</h1>
                 <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="icon" title="goggle"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon" title="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon" title="github"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon" title="linkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
                 <hr>
                 <h1>OR</h1>
                 <hr>
                 <span>Fill Out The Following Info For Registeration</span>
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <input type="password" id="pass" placeholder="Password" required>
-                <input type="password" id="confirm_pass" placeholder="Confirm Password" required>
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" id="pass" placeholder="Password" required>
+                <input type="password" name="confirm_password" id="confirm_pass" placeholder="Confirm Password"
+                    required>
                 <span id="wrong_pass_alert"></span>
-                <button id="signup">Sign Up</button>
+                <button type="submit" id="signup">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in">
-            <form>
+            <form action="../php/login.php" method="post">
                 <!-- <h1>Login With</h1>
                 <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="icon" title=""><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon" title=""><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon" title=""><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon" title=""><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
                 <hr>
                 <h1>OR</h1> -->
                 <h1>Login</h1>
                 <hr>
                 <hr>
-                <span>Login With Your Name & Password</span>
-                <input type="text" placeholder="Nmae" required>
-                <input type="password" placeholder="Password" required>
-                <button>Login</button>
+                <span>Login With Your Email & Password</span>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
             </form>
         </div>
         <div class="toggle-container">
