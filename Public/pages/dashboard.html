@@ -24,6 +24,26 @@
             <button onclick="sendWish()">Send Birthday Wish</button>
         </div>
     </div>
+    <div class="management-container">
+        <h2>Birthday Management</h2>
+        <div class="filter-sort">
+            <input type="text" id="filterInput" placeholder="Filter by name">
+            <select id="sortSelect">
+                <option value="name">Sort by Name</option>
+                <option value="date">Sort by Date</option>
+            </select>
+        </div>
+        <table id="birthdayTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
     <script src="../Js/dashboard-script.js"></script>
 </body>
 </html>
