@@ -1,6 +1,8 @@
 :root {
     --light-green: #90EE90;
     --dark-green: #2E8B57;
+    --dark: #000000;
+    --light: #ffffff; 
 }
 
 * {
@@ -49,6 +51,11 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
+    color: var(--light);
+    font-size: 20px;
+}
+nav ul li a:hover{
+    text-decoration: underline;
     color: var(--dark-green);
 }
 
