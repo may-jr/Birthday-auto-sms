@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const registerBtn = document.querySelector('.register-btn');
     registerBtn.addEventListener('click', () => {
-        alert('Registration form coming soon!');
+        window.location.href = '/Public/pages/registration.html';
     });
 
     const contactForm = document.querySelector('form');
@@ -53,3 +53,4 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.reset();
     });
 });
+
