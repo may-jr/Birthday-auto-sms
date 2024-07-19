@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/2efc16a506.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Upcoming Birthdays</h2>
+            <ul id="upcomingBirthdays"></ul>
+        </div>
+        <div class="card">
+            <h2>Recent Birthday Wishes Sent</h2>
+            <ul id="recentWishes"></ul>
+        </div>
+        <div class="card">
+            <h2>Quick Actions</h2>
+            <button onclick="addBirthday()">Add New Birthday</button>
+            <button onclick="sendWish()">Send Birthday Wish</button>
+        </div>
+    </div>
+    <script src="../Js/dashboard-script.js"></script>
+</body>
+</html>
