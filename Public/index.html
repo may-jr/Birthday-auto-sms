@@ -1,14 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Wishing System</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h1>Birthday Wishing System</h1>
-    <div id="birthdays"></div>
-    <script src="script.js"></script>
-  </body>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://svgshare.com/i/10Jy.svg" alt="Birthday Cake Logo">
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="register-btn">Register</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>Automatic Birthday Wishing System</h1>
+            <p>Never forget a birthday again!</p>
+            <button class="cta-btn">Get Started</button>
+        </section>
+
+        <section id="about" class="about">
+            <h2>About Us</h2>
+            <p>We're dedicated to helping you celebrate the special moments in life. Our automated system ensures that you never miss a loved one's birthday.</p>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>SMS Integration</h3>
+                    <p>Receive and send birthday wishes via SMS.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Automated Reminders</h3>
+                    <p>Get notified about upcoming birthdays.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Customizable Messages</h3>
+                    <p>Personalize your birthday greetings.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Easy Management</h3>
+                    <p>Add, edit, and remove birthdays with ease.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Birthday Wishing System. All rights reserved.</p>
+    </footer>
+
+    <script src="./Js/script.js"></script>
+</body>
 </html>
