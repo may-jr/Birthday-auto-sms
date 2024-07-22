@@ -1,14 +1,15 @@
 <?php
+// Database connection parameters
 $host = "localhost";
-$user = "root";
-$pass = "";
-$db = "birthday_wishing_system";
+$username = "root";
+$password = "";
+$database = "birthday_wishing_system";
 
-// establishing connection
-$conn = new mysqli($host, $user, $pass, $db);
-// checking connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Create connection
+$conn = mysqli_connect($host, $username, $password, $database);
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
-
 ?>
