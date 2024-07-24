@@ -1,6 +1,6 @@
   // Sample data (replace with actual data from your backend)
   const upcomingBirthdays = [
-    { name: "Manasseh Qharney", date: "2024-07-25" },
+    { name: "Manasseh Qharny", date: "2024-07-25" },
     { name: "Jude Smith", date: "2024-08-03" },
     { name: "Selasi Johnson", date: "2024-08-10" }
 ];
