@@ -13,20 +13,21 @@
         $con_passd = mysqli_real_escape_string($my_connection, $_POST['confirm_password']);
 
         // SQL query to check if the username or email already exists
-        $compare = "SELECT * FROM clients WHERE FULLNAME = '$uname' OR Email = '$mail'";
+        $compare = "SELECT * FROM clients WHERE FULLNAME = '$fname' OR Email = '$mail'";
 
         // Execute the query
         $check = mysqli_query($my_connection, $compare);
 
         // Check if a matching username or email is found in the database
         if(mysqli_num_rows($check) > 0){
-            echo "<script> alert('Username or Email has already been taken');window.location.href='../HTML/login.html'; </script>";
+            echo "<script> alert('Username or Email has already been taken');
+            window.location.href='../HTML/registration.html'; </script>";
         }
         else{
             // Check if the entered passwords match
             if($passd == $con_passd){
                 // Insert user data into the 'signup' table
-                $data = "INSERT INTO clients (FULLNAME, Email, Password, Confirm_Password) VALUES('$fname','$uname', '$mail' ,'$passd', '$con_passd')";
+                $data = "INSERT INTO clients (FULLNAME, Email, Password, Confirm_Password) VALUES('$fname', '$mail' ,'$passd', '$con_passd')";
                 mysqli_query($my_connection, $data);
                 echo "<script> alert('Registered successfully'); 
                 window.location.href='../pages/dashboard.html';</script>";
