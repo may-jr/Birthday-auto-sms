@@ -24,6 +24,7 @@ if(isset($_POST['login'])){
     } else {
         echo "<script> alert('User not registered');
         window.location.href='../pages/registration.html'; </script>";
+        
     }
 }
 ?>
