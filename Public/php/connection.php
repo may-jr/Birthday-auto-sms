@@ -3,13 +3,13 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "birthday_wishing_system";
+$database = "AUTO_BIRTHDAY_WHISH";
 
 // Create connection
-$conn = mysqli_connect($host, $username, $password, $database);
+$my_connection = mysqli_connect($host, $username, $password, $database);
 
 // Check connection
-if (!$conn) {
+if (!$my_connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
 ?>
