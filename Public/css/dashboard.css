@@ -6,15 +6,24 @@
     --text-color: #333333;
     --sidebar-width: 250px;
     --header-height: 60px;
+    --footer-height: 50px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
     background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+/* Header Styles */
 header {
     background-color: var(--primary-color);
     color: white;
@@ -52,19 +61,24 @@ header {
     cursor: pointer;
 }
 
+/* Content Wrapper Styles */
 .content-wrapper {
     display: flex;
+    flex-grow: 1;
     margin-top: var(--header-height);
+    margin-bottom: var(--footer-height);
 }
 
+/* Sidebar Styles */
 #sidebar {
     width: var(--sidebar-width);
     background-color: var(--card-color);
-    height: calc(100vh - var(--header-height));
+    height: calc(100vh - var(--header-height) - var(--footer-height));
     position: fixed;
     left: 0;
     top: var(--header-height);
     transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
 }
 
 #sidebar.collapsed {
@@ -81,6 +95,7 @@ header {
     padding: 15px;
     color: var(--text-color);
     text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
 #sidebar li a:hover {
@@ -96,6 +111,7 @@ header {
     width: 100%;
 }
 
+/* Main Content Styles */
 #main-content {
     flex-grow: 1;
     margin-left: var(--sidebar-width);
@@ -107,6 +123,7 @@ header {
     margin-left: 50px;
 }
 
+/* Card Styles */
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -120,10 +137,13 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Typography */
 h1, h2 {
     color: var(--text-color);
+    margin-bottom: 15px;
 }
 
+/* Button Styles */
 button {
     background-color: var(--primary-color);
     border: none;
@@ -136,12 +156,14 @@ button {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: var(--secondary-color);
 }
 
+/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -159,6 +181,7 @@ th {
     color: white;
 }
 
+/* Filter and Sort Styles */
 .filter-sort {
     display: flex;
     justify-content: space-between;
@@ -171,10 +194,48 @@ th {
     border-radius: 4px;
 }
 
+/* Section Styles */
 section {
     display: none;
 }
 
 section.active {
     display: block;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--footer-height);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 100%;
+        transform: translateX(-100%);
+    }
+
+    #sidebar.collapsed {
+        transform: translateX(0);
+    }
+
+    #main-content {
+        margin-left: 0;
+    }
+
+    #main-content.expanded {
+        margin-left: 0;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+    }
 }
