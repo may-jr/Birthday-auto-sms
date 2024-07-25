@@ -23,3 +23,11 @@ CREATE TABLE birthdays (
 );
 
 INSERT INTO birthdays (name, date) VALUES ('Sam Derek', '1999-04-03');
+
+CREATE TABLE wish_templates (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    relationship VARCHAR(50) NOT NULL,
+    message TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
