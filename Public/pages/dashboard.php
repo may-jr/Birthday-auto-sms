@@ -4,6 +4,7 @@ require_once '../php/connection.php';
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@ require_once '../php/connection.php';
     <link rel="stylesheet" href="../css/dashboard.css">
     <title>Dashboard</title>
 </head>
+
 <body>
     <header>
         <div class="logo">Birthday Wishing System</div>
@@ -81,8 +83,8 @@ require_once '../php/connection.php';
             <section id="settings">
                 <h1>Settings</h1>
                 <!-- Add settings content here -->
-                 <!-- Add this near the top of your dashboard, perhaps next to the logout button -->
-                    <button id="theme-toggle" class="theme-toggle-btn">Toggle Dark Mode</button>
+                <!-- Add this near the top of your dashboard, perhaps next to the logout button -->
+                <button id="theme-toggle" class="theme-toggle-btn">Toggle Dark Mode</button>
             </section>
         </main>
     </div>
@@ -92,4 +94,5 @@ require_once '../php/connection.php';
 
     <script src="../js/dashboard-script.js"></script>
 </body>
+
 </html>
