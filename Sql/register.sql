@@ -21,3 +21,5 @@ CREATE TABLE birthdays (
     name VARCHAR(100) NOT NULL,
     date DATE NOT NULL
 );
+
+INSERT INTO birthdays (name, date) VALUES ('Sam Derek', '1999-04-03');

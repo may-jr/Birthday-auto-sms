@@ -16,7 +16,7 @@ require_once '../php/connection.php';
         <div class="logo">Birthday Wishing System</div>
         <div class="user-info">
             <span>Welcome, User</span>
-            <button id="logoutBtn">Logout</button>
+            <button id="logoutBtn"><a href="../php/logout.php"><i class="fa-solid fa-right-from-bracket"></i></a></button>
         </div>
     </header>
 
