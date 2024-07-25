@@ -67,6 +67,7 @@ require_once '../php/connection.php';
                         <tr>
                             <th>Name</th>
                             <th>Date</th>
+                            <th>Phone</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
