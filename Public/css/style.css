@@ -121,6 +121,10 @@ section.fade-in {
 .cta-btn:hover {
     background-color: #1a5d3a;
 }
+.cta-btn a{
+    color: white;
+    text-decoration: none;
+}
 
 .about, .features, .contact {
     background-color: white;
