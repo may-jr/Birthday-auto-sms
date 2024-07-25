@@ -16,10 +16,13 @@ INSERT INTO clients (FUllNAME, Email, Password, Confirm_Password) VALUES ('User'
 select * from clients
 
 
+
 CREATE TABLE birthdays (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
+    phone VARCHAR(15),
     date DATE NOT NULL
 );
 
-INSERT INTO birthdays (name, date) VALUES ('Sam Derek', '1999-04-03');
+INSERT INTO birthdays (name, phone, date) VALUES ('Sam Derek', '+2331027362','1999-04-03');
+INSERT INTO birthdays (name, phone, date) VALUES ('John Doe', '+233545890235', '1995-07-15');

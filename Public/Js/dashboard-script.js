@@ -42,18 +42,19 @@ function fetchBirthdays() {
 function addBirthday() {
     const name = prompt("Enter the person's name:");
     const date = prompt("Enter the birthday (YYYY-MM-DD):");
-    if (name && date) {
+    const phone = prompt("Enter Phone number (add country code):");
+    if (name && date && phone) {
         fetch('../php/add_birthday.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ name, date }),
+            body: JSON.stringify({ name, date, phone }),
         })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert(`Birthday added for ${name} on ${date}`);
+                alert(`Birthday added for ${name} on ${date}, Phone ${phone}`);
                 fetchBirthdays();
             } else {
                 alert('Failed to add birthday');
@@ -69,13 +70,14 @@ function editBirthday(id) {
     if (birthday) {
         const newName = prompt("Enter new name:", birthday.name);
         const newDate = prompt("Enter new date (YYYY-MM-DD):", birthday.date);
-        if (newName && newDate) {
-            fetch('update_birthday.php', {
+        const newPhone = prompt("Enter new Phone Number (add country code):", birthday.phone);
+        if (newName && newDate && newPhone) {
+            fetch('../php/update_birthday.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id, name: newName, date: newDate }),
+                body: JSON.stringify({ id, name: newName, date: newDate, phone: newPhone }),
             })
             .then(response => response.json())
             .then(data => {
@@ -141,8 +143,9 @@ function updateBirthdayTable() {
         const row = tableBody.insertRow();
         row.insertCell(0).textContent = birthday.name;
         row.insertCell(1).textContent = birthday.date;
+        row.insertCell(2).textContent = birthday.phone;
         
-        const actionsCell = row.insertCell(2);
+        const actionsCell = row.insertCell(3);
         const editButton = document.createElement("button");
         editButton.textContent = "Edit";
         editButton.onclick = () => editBirthday(birthday.id);
@@ -177,7 +180,7 @@ function updateUpcomingBirthdays() {
 
     upcomingBirthdays.forEach(birthday => {
         const li = document.createElement("li");
-        li.textContent = `${birthday.name} - ${birthday.date}`;
+        li.textContent = `${birthday.name} - ${birthday.date} - ${birthday.phone}`;
         upcomingList.appendChild(li);
     });
 }
