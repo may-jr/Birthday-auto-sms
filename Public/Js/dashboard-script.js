@@ -161,7 +161,7 @@ function updateBirthdayTable() {
 
 // Function to update upcoming birthdays
 function fetchUpcomingBirthdays() {
-    fetch('../php/get_upcoming_birthdays.php')
+    fetch('../php/get_upcoming.php')
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -181,7 +181,7 @@ function fetchUpcomingBirthdays() {
 
 // Function to fetch and display recent wishes
 function fetchRecentWishes() {
-    fetch('../php/get_recent_wishes.php')
+    fetch('../php/get_recent.php')
         .then(response => response.json())
         .then(data => {
             if (data.success) {

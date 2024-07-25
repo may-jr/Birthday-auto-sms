@@ -30,7 +30,7 @@
                 $data = "INSERT INTO clients (FULLNAME, Email, Password, Confirm_Password) VALUES('$fname', '$mail' ,'$passd', '$con_passd')";
                 mysqli_query($my_connection, $data);
                 echo "<script> alert('Registered successfully'); 
-                window.location.href='../pages/dashboard.html';</script>";
+                window.location.href='../pages/dashboard.php';</script>";
             }
             else{
                 echo "<script> alert('Password does not Match');
