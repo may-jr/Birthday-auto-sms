@@ -143,5 +143,26 @@ function updateBirthdayTable() {
     });
 }
 
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check if user has a preferred theme stored
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        body.classList.add(currentTheme);
+    }
+
+    themeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-theme')) {
+            body.classList.remove('dark-theme');
+            localStorage.setItem('theme', '');
+        } else {
+            body.classList.add('dark-theme');
+            localStorage.setItem('theme', 'dark-theme');
+        }
+    });
+});
 // Initial table population
 updateBirthdayTable();
