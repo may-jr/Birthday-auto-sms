@@ -26,6 +26,19 @@ navLinks.forEach(link => {
 // Global variables
 let birthdays = [];
 
+// A function to run the PHP file that will send the message
+function sendWish() {
+    return fetch('../../cron/send_wishes.php')
+      .then(response => response.text())
+      .then(data => {
+        console.log(data); // Output the response from the PHP file
+        return data; // Return the data for further processing if needed
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
 // Function to fetch birthdays from the server
 function fetchBirthdays() {
     fetch('../php/get_birthdays.php')

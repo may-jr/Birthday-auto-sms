@@ -1,5 +1,5 @@
 <?php
-require_once 'connection.php';
+require_once './Public/php/connection.php';
 
 // Check if the connection is established
 if (!isset($my_connection)) {
