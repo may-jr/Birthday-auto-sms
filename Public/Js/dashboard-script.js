@@ -28,7 +28,7 @@ let birthdays = [];
 
 // Function to fetch birthdays from the server
 function fetchBirthdays() {
-    fetch('get_birthdays.php')
+    fetch('..get_birthdays.php')
         .then(response => response.json())
         .then(data => {
             birthdays = data;
