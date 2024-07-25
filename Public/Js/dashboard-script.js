@@ -51,16 +51,16 @@ function addBirthday() {
             },
             body: JSON.stringify({ name, date, phone }),
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert(`Birthday added for ${name} on ${date}, Phone ${phone}`);
-                fetchBirthdays();
-            } else {
-                alert('Failed to add birthday');
-            }
-        })
-        .catch(error => console.error('Error:', error));
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(`Birthday added for ${name} on ${date}, Phone ${phone}`);
+                    fetchBirthdays();
+                } else {
+                    alert('Failed to add birthday');
+                }
+            })
+            .catch(error => console.error('Error:', error));
     }
 }
 
@@ -79,16 +79,16 @@ function editBirthday(id) {
                 },
                 body: JSON.stringify({ id, name: newName, date: newDate, phone: newPhone }),
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert(`Birthday updated for ${newName}`);
-                    fetchBirthdays();
-                } else {
-                    alert('Failed to update birthday');
-                }
-            })
-            .catch(error => console.error('Error:', error));
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(`Birthday updated for ${newName}`);
+                        fetchBirthdays();
+                    } else {
+                        alert('Failed to update birthday');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
         }
     }
 }
@@ -103,16 +103,16 @@ function deleteBirthday(id) {
             },
             body: JSON.stringify({ id }),
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Birthday deleted successfully');
-                fetchBirthdays();
-            } else {
-                alert('Failed to delete birthday');
-            }
-        })
-        .catch(error => console.error('Error:', error));
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Birthday deleted successfully');
+                    fetchBirthdays();
+                } else {
+                    alert('Failed to delete birthday');
+                }
+            })
+            .catch(error => console.error('Error:', error));
     }
 }
 
@@ -144,51 +144,67 @@ function updateBirthdayTable() {
         row.insertCell(0).textContent = birthday.name;
         row.insertCell(1).textContent = birthday.date;
         row.insertCell(2).textContent = birthday.phone;
-        
+
         const actionsCell = row.insertCell(3);
         const editButton = document.createElement("button");
         editButton.textContent = "Edit";
         editButton.onclick = () => editBirthday(birthday.id);
-        
+
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
         deleteButton.onclick = () => deleteBirthday(birthday.id);
-        
+
         actionsCell.appendChild(editButton);
         actionsCell.appendChild(deleteButton);
     });
 }
 
 // Function to update upcoming birthdays
-function updateUpcomingBirthdays() {
-    const upcomingList = document.getElementById("upcomingBirthdays");
-    upcomingList.innerHTML = "";
-
-    const today = new Date();
-    const upcomingBirthdays = birthdays
-        .filter(birthday => {
-            const birthdayDate = new Date(birthday.date);
-            birthdayDate.setFullYear(today.getFullYear());
-            if (birthdayDate < today) {
-                birthdayDate.setFullYear(today.getFullYear() + 1);
+function fetchUpcomingBirthdays() {
+    fetch('../php/get_upcoming_birthdays.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const upcomingList = document.getElementById("upcomingBirthdays");
+                upcomingList.innerHTML = "";
+                data.data.forEach(birthday => {
+                    const li = document.createElement("li");
+                    li.textContent = `${birthday.name} - ${birthday.date} - ${birthday.phone}`;
+                    upcomingList.appendChild(li);
+                });
+            } else {
+                console.error('Error fetching upcoming birthdays:', data.error);
             }
-            const timeDiff = birthdayDate.getTime() - today.getTime();
-            const dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-            return dayDiff <= 30;
         })
-        .sort((a, b) => new Date(a.date) - new Date(b.date));
+        .catch(error => console.error('Error:', error));
+}
 
-    upcomingBirthdays.forEach(birthday => {
-        const li = document.createElement("li");
-        li.textContent = `${birthday.name} - ${birthday.date} - ${birthday.phone}`;
-        upcomingList.appendChild(li);
-    });
+// Function to fetch and display recent wishes
+function fetchRecentWishes() {
+    fetch('../php/get_recent_wishes.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const wishesList = document.getElementById("recentWishes");
+                wishesList.innerHTML = "";
+                data.data.forEach(wish => {
+                    const li = document.createElement("li");
+                    li.textContent = `${wish.name} - ${wish.date} - ${wish.message.substring(0, 30)}...`;
+                    wishesList.appendChild(li);
+                });
+            } else {
+                console.error('Error fetching recent wishes:', data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
 }
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     fetchBirthdays();
-    
+    fetchUpcomingBirthdays();
+    fetchRecentWishes();
+
     // Add event listener for the "Add Birthday" button
     const addBirthdayBtn = document.getElementById("addBirthdayBtn");
     if (addBirthdayBtn) {
