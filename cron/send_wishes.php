@@ -14,13 +14,14 @@ $sender_id = 'Page1Salon';
 $today = date('Y-m-d');
 
 // Query to get birthdays for today
-$query = "SELECT * FROM birthdays WHERE DATE_FORMAT(date, '%m-%d') = DATE_FORMAT('$today', '%m-%d')";
+$query = "SELECT * FROM birthdays WHERE DATE_FORMAT(date, '%m-%d') = DATE_FORMAT(CURDATE(), '%m-%d')";
 $result = $my_connection->query($query);
 
 if ($result) {
+    $messages_sent = 0;
     while ($row = $result->fetch_assoc()) {
         $name = $row['name'];
-        $phone = $row['phone']; // Assuming you have a 'phone' column in your 'birthdays' table
+        $phone = $row['phone'];
 
         // Compose the message
         $message = urlencode("Happy birthday, $name! Wishing you a fantastic day filled with joy and celebration.");
@@ -39,6 +40,7 @@ if ($result) {
         switch ($response_code) {
             case 1000:
                 $log_message .= "Success";
+                $messages_sent++;
                 break;
             case 1002:
                 $log_message .= "SMS sending failed";
@@ -69,7 +71,7 @@ if ($result) {
         }
         error_log($log_message . "\n", 3, "birthday_wishes.log");
     }
-    echo "Birthday wishes sent successfully!";
+    echo "Birthday wishes sent successfully! Total messages sent: $messages_sent";
 } else {
     echo "Error fetching birthdays: " . $my_connection->error;
 }

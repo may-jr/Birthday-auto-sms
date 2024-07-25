@@ -48,7 +48,7 @@ require_once '../php/connection.php';
                     <div class="card">
                         <h2>Quick Actions</h2>
                         <button onclick="addBirthday()">Add New Birthday</button>
-                        <button onclick="sendWish()">Send Birthday Wish</button>
+                        <button onclick="runPHPFile(phpFile)">Send Birthday Wish</button>
                     </div>
                 </div>
             </section>

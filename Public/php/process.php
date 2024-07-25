@@ -8,7 +8,7 @@ if(isset($_POST['login'])){
 
     $query = "SELECT * FROM clients WHERE FULLNAME = '$name' OR Email = '$name'";
     $result = mysqli_query($my_connection, $query);
-
+    
     if($result && mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_assoc($result);
 

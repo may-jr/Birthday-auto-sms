@@ -26,18 +26,22 @@ navLinks.forEach(link => {
 // Global variables
 let birthdays = [];
 
-// A function to run the PHP file that will send the message
-function sendWish() {
-    return fetch('../../cron/send_wishes.php')
+function runPHPFile(phpFile) {
+    return fetch(phpFile)
       .then(response => response.text())
       .then(data => {
-        console.log(data); // Output the response from the PHP file
-        return data; // Return the data for further processing if needed
+        // Create a temporary element to hold the PHP output
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = data;
+        
+        // Append the element to the body (or any other desired location)
+        document.body.appendChild(tempElement);
       })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+      .catch(error => console.error('Error:', error));
   }
+  
+  // Usage
+  runPHPFile('../../cron/send_wishes.php');
 
 // Function to fetch birthdays from the server
 function fetchBirthdays() {
