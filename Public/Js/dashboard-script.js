@@ -28,7 +28,7 @@ let birthdays = [];
 
 // Function to fetch birthdays from the server
 function fetchBirthdays() {
-    fetch('get_birthdays.php')
+    fetch('../php/get_birthdays.php')
         .then(response => response.json())
         .then(data => {
             birthdays = data;
@@ -43,7 +43,7 @@ function addBirthday() {
     const name = prompt("Enter the person's name:");
     const date = prompt("Enter the birthday (YYYY-MM-DD):");
     if (name && date) {
-        fetch('add_birthday.php', {
+        fetch('../php/add_birthday.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ function editBirthday(id) {
 // Function to delete a birthday
 function deleteBirthday(id) {
     if (confirm("Are you sure you want to delete this birthday?")) {
-        fetch('delete_birthday.php', {
+        fetch('../php/delete_birthday.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
