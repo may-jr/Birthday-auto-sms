@@ -202,7 +202,7 @@ section {
 section.active {
     display: block;
 }
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
 /* Existing styles remain the same */
 
 /* Dark theme styles */
@@ -257,7 +257,7 @@ body.dark-theme {
 .dark-theme .theme-toggle-btn {
     background-color: #ffa500;
     color: #1a1a1a;
-=======
+}
 
 /* Footer Styles */
 footer {
@@ -294,5 +294,5 @@ footer {
     .card-container {
         grid-template-columns: 1fr;
     }
->>>>>>> 2dbddd5ae51a23ebfb709aba8f440a2bbd8ca50b
+/* >>>>>>> 2dbddd5ae51a23ebfb709aba8f440a2bbd8ca50b */
 }
