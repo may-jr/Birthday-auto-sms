@@ -14,3 +14,10 @@ INSERT INTO clients (FUllNAME, Email, Password, Confirm_Password) VALUES ('Admin
 INSERT INTO clients (FUllNAME, Email, Password, Confirm_Password) VALUES ('User', 'User@mail.com','User1234','User1234');
 
 select * from clients
+
+
+CREATE TABLE birthdays (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    date DATE NOT NULL
+);

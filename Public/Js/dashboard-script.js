@@ -23,59 +23,43 @@ navLinks.forEach(link => {
     });
 });
 
-// Sample data (replace with actual data from your backend)
-const upcomingBirthdays = [
-    { name: "Manasseh Qharny", date: "2024-07-25" },
-    { name: "Jude Smith", date: "2024-08-03" },
-    { name: "Selasi Johnson", date: "2024-08-10" }
-];
+// Global variables
+let birthdays = [];
 
-const recentWishes = [
-    { name: "Alice Brown", date: "2024-07-15" },
-    { name: "Bob Wilson", date: "2024-07-10" },
-    { name: "Carol Taylor", date: "2024-07-05" }
-];
-
-let birthdays = [
-    { id: 1, name: "Manasseh Qharny", date: "2024-07-25" },
-    { id: 2, name: "Jude Smith", date: "2024-08-03" },
-    { id: 3, name: "Selasi Johnson", date: "2024-08-10" }
-];
-
-// Populate upcoming birthdays
-const upcomingList = document.getElementById("upcomingBirthdays");
-upcomingBirthdays.forEach(birthday => {
-    const li = document.createElement("li");
-    li.textContent = `${birthday.name} - ${birthday.date}`;
-    upcomingList.appendChild(li);
-});
-
-// Populate recent wishes
-const wishesList = document.getElementById("recentWishes");
-recentWishes.forEach(wish => {
-    const li = document.createElement("li");
-    li.textContent = `${wish.name} - ${wish.date}`;
-    wishesList.appendChild(li);
-});
+// Function to fetch birthdays from the server
+function fetchBirthdays() {
+    fetch('get_birthdays.php')
+        .then(response => response.json())
+        .then(data => {
+            birthdays = data;
+            updateBirthdayTable();
+            updateUpcomingBirthdays();
+        })
+        .catch(error => console.error('Error:', error));
+}
 
 // Function to add a new birthday
 function addBirthday() {
     const name = prompt("Enter the person's name:");
     const date = prompt("Enter the birthday (YYYY-MM-DD):");
     if (name && date) {
-        const newId = birthdays.length > 0 ? Math.max(...birthdays.map(b => b.id)) + 1 : 1;
-        birthdays.push({ id: newId, name, date });
-        alert(`Birthday added for ${name} on ${date}`);
-        updateBirthdayTable();
-    }
-}
-
-// Function to send a birthday wish
-function sendWish() {
-    const name = prompt("Enter the person's name:");
-    if (name) {
-        alert(`Birthday wish sent to ${name}`);
-        // Here you would typically send this data to your backend
+        fetch('add_birthday.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, date }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(`Birthday added for ${name} on ${date}`);
+                fetchBirthdays();
+            } else {
+                alert('Failed to add birthday');
+            }
+        })
+        .catch(error => console.error('Error:', error));
     }
 }
 
@@ -86,9 +70,23 @@ function editBirthday(id) {
         const newName = prompt("Enter new name:", birthday.name);
         const newDate = prompt("Enter new date (YYYY-MM-DD):", birthday.date);
         if (newName && newDate) {
-            birthday.name = newName;
-            birthday.date = newDate;
-            updateBirthdayTable();
+            fetch('update_birthday.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id, name: newName, date: newDate }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(`Birthday updated for ${newName}`);
+                    fetchBirthdays();
+                } else {
+                    alert('Failed to update birthday');
+                }
+            })
+            .catch(error => console.error('Error:', error));
         }
     }
 }
@@ -96,8 +94,23 @@ function editBirthday(id) {
 // Function to delete a birthday
 function deleteBirthday(id) {
     if (confirm("Are you sure you want to delete this birthday?")) {
-        birthdays = birthdays.filter(b => b.id !== id);
-        updateBirthdayTable();
+        fetch('delete_birthday.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Birthday deleted successfully');
+                fetchBirthdays();
+            } else {
+                alert('Failed to delete birthday');
+            }
+        })
+        .catch(error => console.error('Error:', error));
     }
 }
 
@@ -143,5 +156,39 @@ function updateBirthdayTable() {
     });
 }
 
-// Initial table population
-updateBirthdayTable();
+// Function to update upcoming birthdays
+function updateUpcomingBirthdays() {
+    const upcomingList = document.getElementById("upcomingBirthdays");
+    upcomingList.innerHTML = "";
+
+    const today = new Date();
+    const upcomingBirthdays = birthdays
+        .filter(birthday => {
+            const birthdayDate = new Date(birthday.date);
+            birthdayDate.setFullYear(today.getFullYear());
+            if (birthdayDate < today) {
+                birthdayDate.setFullYear(today.getFullYear() + 1);
+            }
+            const timeDiff = birthdayDate.getTime() - today.getTime();
+            const dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            return dayDiff <= 30;
+        })
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    upcomingBirthdays.forEach(birthday => {
+        const li = document.createElement("li");
+        li.textContent = `${birthday.name} - ${birthday.date}`;
+        upcomingList.appendChild(li);
+    });
+}
+
+// Initialize the application
+document.addEventListener('DOMContentLoaded', () => {
+    fetchBirthdays();
+    
+    // Add event listener for the "Add Birthday" button
+    const addBirthdayBtn = document.getElementById("addBirthdayBtn");
+    if (addBirthdayBtn) {
+        addBirthdayBtn.addEventListener("click", addBirthday);
+    }
+});
