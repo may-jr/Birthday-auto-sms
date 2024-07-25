@@ -34,24 +34,24 @@ require_once '../php/connection.php';
         </nav>
 
         <main id="main-content">
-        <section id="dashboard" class="active">
-    <h1>Dashboard</h1>
-    <div class="card-container">
-        <div class="card">
-            <h2>Upcoming Birthdays</h2>
-            <ul id="upcomingBirthdays"></ul>
-        </div>
-        <div class="card">
-            <h2>Recent Birthday Wishes Sent</h2>
-            <ul id="recentWishes"></ul>
-        </div>
-        <div class="card">
-            <h2>Quick Actions</h2>
-            <button onclick="addBirthday()">Add New Birthday</button>
-            <button onclick="sendWish()">Send Birthday Wish</button>
-        </div>
-    </div>
-</section>
+            <section id="dashboard" class="active">
+                <h1>Dashboard</h1>
+                <div class="card-container">
+                    <div class="card">
+                        <h2>Upcoming Birthdays</h2>
+                        <ul id="upcomingBirthdays"></ul>
+                    </div>
+                    <div class="card">
+                        <h2>Recent Birthday Wishes Sent</h2>
+                        <ul id="recentWishes"></ul>
+                    </div>
+                    <div class="card">
+                        <h2>Quick Actions</h2>
+                        <button onclick="addBirthday()">Add New Birthday</button>
+                        <button onclick="sendWish()">Send Birthday Wish</button>
+                    </div>
+                </div>
+            </section>
 
             <section id="birthdays">
                 <h1>Birthday Management</h1>
