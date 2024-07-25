@@ -80,6 +80,8 @@ require_once '../php/connection.php';
             <section id="settings">
                 <h1>Settings</h1>
                 <!-- Add settings content here -->
+                 <!-- Add this near the top of your dashboard, perhaps next to the logout button -->
+                    <button id="theme-toggle" class="theme-toggle-btn">Toggle Dark Mode</button>
             </section>
         </main>
     </div>

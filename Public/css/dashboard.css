@@ -202,6 +202,62 @@ section {
 section.active {
     display: block;
 }
+/* <<<<<<< HEAD */
+/* Existing styles remain the same */
+
+/* Dark theme styles */
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.dark-theme .container {
+    background-color: #2c2c2c;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme h1, .dark-theme h2 {
+    color: #ffffff;
+}
+
+.dark-theme input {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+
+.dark-theme button {
+    background-color: #4CAF50;
+}
+
+.dark-theme button:hover {
+    background-color: #45a049;
+}
+
+.dark-theme .logout-btn {
+    background-color: #d32f2f;
+}
+
+.dark-theme .logout-btn:hover {
+    background-color: #b71c1c;
+}
+
+.theme-toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dark-theme .theme-toggle-btn {
+    background-color: #ffa500;
+    color: #1a1a1a;
+}
 
 /* Footer Styles */
 footer {
@@ -238,4 +294,5 @@ footer {
     .card-container {
         grid-template-columns: 1fr;
     }
+/* >>>>>>> 2dbddd5ae51a23ebfb709aba8f440a2bbd8ca50b */
 }
