@@ -6,6 +6,8 @@ if (!isset($my_connection)) {
     die(json_encode(['success' => false, 'error' => 'Database connection not established.']));
 }
 
+
+
 // Get the raw POST data
 $rawData = file_get_contents('php://input');
 
