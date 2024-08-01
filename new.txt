@@ -1,0 +1,3 @@
+Things I need to do :
+- auto implement the birthdy feature
+- add more feature like get to send message to anyone of
